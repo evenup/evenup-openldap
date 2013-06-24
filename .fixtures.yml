@@ -1,0 +1,9 @@
+fixtures:
+  repositories:
+    backups: https://github.com/evenup/evenup-backups.git
+    concat: https://github.com/ripienaar/puppet-concat.git
+    rsyslog: https://github.com/evenup/evenup-rsyslog.git
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
+  symlinks:
+    openldap: "#{source_dir}"
+
