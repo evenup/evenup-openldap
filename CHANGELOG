@@ -1,15 +1,4 @@
-v2.3.0:
-  Add ability to set custom Headers directives
-  Update sensu checks
-v2.2.1:
-  Add containment to module
-v2.2.0:
-  Add custom logstash fields
-v2.1.0:
-  Ensure apache version is latest
-  Remove logrotate dependency
-  Remove hiera dependency
-  Add mod_deflate config
-  Add mod_expires to vhost
-v2.0.0:
+v0.1.0:
+  Add support for check-password module
+v0.0.1:
   Initial public release

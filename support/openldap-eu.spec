@@ -81,7 +81,7 @@ Protocol) applications and development tools. LDAP is a set of
 protocols for accessing directory services (usually phone book style
 information, but other information is possible) over the Internet,
 similar to the way DNS (Domain Name System) information is propagated
-over the Internet. 
+over the Internet.
 
 This package contains all: server, clients, librairies and docs. It
 can be installed with openldap and openldap-devel. It provides tools
@@ -103,17 +103,17 @@ URL:		http://www.ltb-project.org
 BuildRequires:	cracklib-devel
 %endif
 
-Requires:	cracklib, cracklib-dicts, %{real_name}-ltb >= %{real_version}
+Requires:	cracklib, cracklib-dicts, %{real_name}-eu >= %{real_version}
 
 %description check-password
-check_password.c is an OpenLDAP pwdPolicyChecker module used to check the strength 
-and quality of user-provided passwords. This module is used as an extension of the 
-OpenLDAP password policy controls, see slapo-ppolicy(5) section pwdCheckModule. 
-check_password.c will run a number of checks on the passwords to ensure minimum 
-strength and quality requirements are met. Passwords that do not meet these 
+check_password.c is an OpenLDAP pwdPolicyChecker module used to check the strength
+and quality of user-provided passwords. This module is used as an extension of the
+OpenLDAP password policy controls, see slapo-ppolicy(5) section pwdCheckModule.
+check_password.c will run a number of checks on the passwords to ensure minimum
+strength and quality requirements are met. Passwords that do not meet these
 requirements are rejected.
 
-This is provided by LDAP Tool Box project: http://www.ltb-project.org 
+This is provided by LDAP Tool Box project: http://www.ltb-project.org
 
 #=================================================
 # Subpackage contrib-overlays
@@ -131,7 +131,7 @@ Requires:	%{real_name}-ltb >= %{real_version}
 Some overlays are not included in the OpenLDAP main package but provided
 as contributions. This package provide some of them.
 
-This is provided by LDAP Tool Box project: http://www.ltb-project.org 
+This is provided by LDAP Tool Box project: http://www.ltb-project.org
 
 #=================================================
 # Source preparation
@@ -156,7 +156,7 @@ export LDFLAGS="-L%{bdbdir}/%{_lib}"
 make depend
 make %{?_smp_mflags}
 # check_password
-cd %{check_password_name}-%{check_password_version} 
+cd %{check_password_name}-%{check_password_version}
 make %{?_smp_mflags} "CONFIG=%{check_password_conf}" "LDAP_INC=-I../include -I../servers/slapd"
 cd ..
 # contrib-overlays

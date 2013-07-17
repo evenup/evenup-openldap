@@ -22,6 +22,16 @@ Generic OpenLDAP install
   }
 </pre>
 
+To use the check-password ppolicy module:
+<pre>
+  class { 'openldap':
+    chkpass_pkg => openldap-eu-check-password
+  }
+</pre>
+You will then need to modify your password policy entry by adding the
+the objectClass pwdPolicyChecker and the attribute pwdCheckModule with a value
+of check_password.so.
+
 
 Known Issues:
 -------------

@@ -17,5 +17,10 @@ describe 'openldap::install', :type => :class do
     it { should contain_package('openldap').with_ensure('2.4.23') }
   end
 
+  context 'check-password' do
+    let(:params) { { :chkpass => 'openldap-eu-check-password' } }
+    it { should contain_package('openldap-eu-check-password') }
+  end
+
 end
 
