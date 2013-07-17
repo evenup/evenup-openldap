@@ -24,6 +24,11 @@ describe 'openldap::config', :type => :class do
     it { should contain_file('/etc/openldap/certs/ldap.key').with_source('puppet:///modules/data/mycert.key') }
   end
 
+  context 'with check-password' do
+    let(:params) { { :chkpass => 'openldap-eu-check-password' } }
+    it { should contain_file('/etc/openldap/check_password.conf') }
+  end
+
   context 'with backups' do
     let(:params) { { :backups => true } }
 
