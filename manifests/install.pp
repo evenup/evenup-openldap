@@ -13,8 +13,9 @@
 # Copyright 2013 EvenUp.
 #
 class openldap::install (
-  $package  = 'openldap-eu',
   $ensure   = 'latest',
+  $package  = 'openldap-eu',
+  $chkpass  = false,
 ){
 
   user { 'ldap':
@@ -34,10 +35,19 @@ class openldap::install (
   package { $package:
     ensure  => $ensure,
     notify  => Class['openldap::service'],
+    require => [ User['ldap'], Group['ldap'] ],
+  }
+
+  if $chkpass {
+    package { $chkpass:
+      ensure  => 'latest',
+      require => Package[$package],
+    }
   }
 
   file { '/etc/openldap/slapd.conf':
     ensure  => 'absent',
+    require => Package[$package]
   }
 
   file { '/etc/openldap/slapd.d':
@@ -45,11 +55,11 @@ class openldap::install (
     owner   => 'ldap',
     group   => 'ldap',
     mode    => '0770',
+    require => Package[$package]
   }
 
   rsyslog::snippet { 'openldap':
     content => 'local4.*    -/var/log/openldap.log',
   }
-
 
 }
