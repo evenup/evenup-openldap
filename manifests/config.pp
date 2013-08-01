@@ -117,7 +117,7 @@ class openldap::config (
 
   case $logsagent {
     'beaver': {
-      beaver::stanza { "/var/log/openldap.log":
+      beaver::stanza { '/var/log/openldap.log':
         type    => 'syslog',
         tags    => ['openldap', $::disposition],
       }
