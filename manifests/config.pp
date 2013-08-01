@@ -28,6 +28,7 @@ class openldap::config (
   $chkpass_minlower = 0,
   $chkpass_mindigit = 0,
   $chkpass_minpunct = 0,
+  $logsagent        = '',
 ) {
 
   $cron = $backups ? {
@@ -112,6 +113,16 @@ class openldap::config (
     user    => 'root',
     hour    => '6',
     minute  => '55',
+  }
+
+  case $logsagent {
+    'beaver': {
+      beaver::stanza { "/var/log/openldap.log":
+        type    => 'syslog',
+        tags    => ['openldap', $::disposition],
+      }
+    }
+    default: {}
   }
 
 }
