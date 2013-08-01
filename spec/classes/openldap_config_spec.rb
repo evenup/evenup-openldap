@@ -11,6 +11,7 @@ describe 'openldap::config', :type => :class do
   it { should_not contain_backups__archive('openldap_backup') }
   it { should contain_cron('openldap_backup').with_ensure('absent') }
   it { should contain_cron('openldap_backupconfig').with_ensure('absent') }
+  it { should_not contain_beaver_stanza('/var/log/openldap.log') }
 
   context 'with certfile' do
     let(:params) { { :certfile => 'puppet:///modules/data/mycert.pem' } }
@@ -37,6 +38,11 @@ describe 'openldap::config', :type => :class do
     it { should contain_cron('openldap_backupconfig').with_ensure('present') }
   end
 
+  context 'with beaver' do
+    let(:params) { { :logsagent => 'beaver' } }
+
+    it { should contain_beaver__stanza('/var/log/openldap.log') }
+  end
 
 end
 
