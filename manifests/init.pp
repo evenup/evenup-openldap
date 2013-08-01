@@ -66,6 +66,11 @@
 #   Integer.  Minimum punctuation characters expected
 #   Default: 0
 #
+# [*logsagent*]
+#   String.  Remote log shipping method
+#   Default: ''
+#   Valid values: beaver
+#
 #
 # === Examples
 #
@@ -102,6 +107,7 @@ class openldap(
   $chkpass_minlower = 0,
   $chkpass_mindigit = 0,
   $chkpass_minpunct = 0,
+  $logsagent        = '',
 ){
 
   class { 'openldap::install':
@@ -126,6 +132,7 @@ class openldap(
     chkpass_minlower  => $chkpass_minlower,
     chkpass_mindigit  => $chkpass_mindigit,
     chkpass_minpunct  => $chkpass_minpunct,
+    logsagent         => $logsagent,
   }
 
   class { 'openldap::service': }
