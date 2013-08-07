@@ -12,8 +12,13 @@ class openldap::pwd_expire(
   $login_attr         = 'uid',
   $mail_attr          = 'mail',
   $mail_subject       = 'Your password is expiring soon',
+  $mail_from          = 'support@example.com',
   $mail_body          = "%name - Please change your password\n\nThe LDAP team."
 ) {
+
+  package { 'mailx':
+    ensure  => 'installed',
+  }
 
   file { '/usr/local/bin/checkLdapPwdExpiration.sh':
     ensure  => 'file',
@@ -21,6 +26,13 @@ class openldap::pwd_expire(
     owner   => 'root',
     group   => 'root',
     content => template('openldap/checkLdapPwdExpiration.sh.erb'),
+  }
+
+  cron { 'pwd_expire':
+    command => '/usr/local/bin/checkLdapPwdExpiration.sh',
+    user    => 'root',
+    hour    => '11',
+    minute  => '20',
   }
 
 }
