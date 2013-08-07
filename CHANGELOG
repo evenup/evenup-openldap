@@ -2,5 +2,6 @@ v0.2.0:
   Add ability for remote logging.  Beaver currently supported
 v0.1.0:
   Add support for check-password module
+  Add password expiration email check
 v0.0.1:
   Initial public release
