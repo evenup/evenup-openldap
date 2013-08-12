@@ -8,6 +8,11 @@ does not configure the directory itself (an exercise left to the user), but
 instead focuses installing required files including certificates for SSL/TLS
 that is left as an exercise to the user.
 
+An additional class (openldap::pwd_expire) is available that installs a nightly
+cron entry to check for users who's passwords are about to expire and emails
+them a warning message.  This script requires using the ppolicy overlay for
+password aging.
+
 
 Usage:
 ------
@@ -31,6 +36,16 @@ To use the check-password ppolicy module:
 You will then need to modify your password policy entry by adding the
 the objectClass pwdPolicyChecker and the attribute pwdCheckModule with a value
 of check_password.so.
+
+Setting up password expiration warning emails:
+<pre>
+  class { 'openldap::pwd_expire':
+    uri         => 'ldap://ldap01.mycompany.com',
+    rootdn      => 'cn=pwd_expire,ou=service_accounts,dc=mycompany,dc=com',
+    rootpw      => 'mysecretpwd',
+    searchbase  => 'ou=people,dc=mycompany,dc=com',
+  }
+</pre>
 
 
 Known Issues:
