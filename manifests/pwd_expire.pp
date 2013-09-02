@@ -100,7 +100,7 @@ class openldap::pwd_expire(
   $mail_attr          = 'mail',
   $mail_subject       = 'Your password is expiring soon',
   $mail_from          = 'support@example.com',
-  $mail_body          = "%name - Please change your password by logging into a host and typing passwd."
+  $mail_body          = '%name - Please change your password by logging into a host and typing passwd.'
 ) {
 
   package { 'mailx':
