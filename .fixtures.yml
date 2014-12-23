@@ -3,7 +3,6 @@ fixtures:
     backups: https://github.com/evenup/evenup-backups.git
     beaver: https://github.com/evenup/evenup-beaver.git
     concat: https://github.com/puppetlabs/puppetlabs-concat.git
-    rsyslog: https://github.com/evenup/evenup-rsyslog.git
     stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
   symlinks:
     openldap: "#{source_dir}"

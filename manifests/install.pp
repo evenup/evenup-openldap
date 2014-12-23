@@ -58,8 +58,4 @@ class openldap::install (
     require => Package[$package]
   }
 
-  rsyslog::snippet { 'openldap':
-    content => 'local4.*    -/var/log/openldap.log',
-  }
-
 }
