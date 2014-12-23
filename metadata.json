@@ -1,0 +1,19 @@
+{
+  "name": "evenup-openldap",
+  "version": "0.2.0",
+  "author": "Justin Lambert <jlambert@letsevenup.com>",
+  "license": "Apache 2.0",
+  "summary": "Manages OpenLDAP",
+  "source": "https://github.com/evenup/evenup-openldap",
+  "project_page": "https://github.com/evenup/evenup-openldap",
+  "issues_url": "https://github.com/evenup/evenup-openldap/issues",
+  "tags": ["openldap", "ldap"],
+  "operatingsystem_support": [
+    { "operatingsystem": "RedHat", "operatingsystemrelease": [ "6", "7" ] },
+    { "operatingsystem": "CentOS", "operatingsystemrelease": [ "6", "7" ] }
+  ],
+  "dependencies": [
+    { "name": "evenup/backups", "version_requirement": ">=1.0.0 <2.0.0" },
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" }
+  ]
+}

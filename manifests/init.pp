@@ -117,22 +117,22 @@ class openldap(
   }
 
   class { 'openldap::config':
-    listen_ip         => $listen_ip,
-    tls_port          => $tls_port,
-    ssl_port          => $ssl_port,
-    certfile          => $certfile,
-    keyfile           => $keyfile,
-    base              => $base,
-    uri               => $uri,
-    backups           => $backups,
-    chkpass           => $chkpass_pkg,
-    chkpass_minpts    => $chkpass_minpts,
-    chkpass_cracklib  => $chkpass_cracklib,
-    chkpass_minupper  => $chkpass_minupper,
-    chkpass_minlower  => $chkpass_minlower,
-    chkpass_mindigit  => $chkpass_mindigit,
-    chkpass_minpunct  => $chkpass_minpunct,
-    logsagent         => $logsagent,
+    listen_ip        => $listen_ip,
+    tls_port         => $tls_port,
+    ssl_port         => $ssl_port,
+    certfile         => $certfile,
+    keyfile          => $keyfile,
+    base             => $base,
+    uri              => $uri,
+    backups          => $backups,
+    chkpass          => $chkpass_pkg,
+    chkpass_minpts   => $chkpass_minpts,
+    chkpass_cracklib => $chkpass_cracklib,
+    chkpass_minupper => $chkpass_minupper,
+    chkpass_minlower => $chkpass_minlower,
+    chkpass_mindigit => $chkpass_mindigit,
+    chkpass_minpunct => $chkpass_minpunct,
+    logsagent        => $logsagent,
   }
 
   class { 'openldap::service': }

@@ -16,8 +16,8 @@ class openldap::service (
 ) {
 
   service { 'slapd':
-    ensure  => 'running',
-    enable  => true,
+    ensure => 'running',
+    enable => true,
   }
 
 }

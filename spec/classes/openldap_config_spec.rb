@@ -31,6 +31,7 @@ describe 'openldap::config', :type => :class do
   end
 
   context 'with backups' do
+    let(:facts) { { :disposition => 'prod' } }
     let(:params) { { :backups => true } }
 
     it { should contain_backups__archive('openldap_backup') }
@@ -39,6 +40,7 @@ describe 'openldap::config', :type => :class do
   end
 
   context 'with beaver' do
+    let(:facts) { { :disposition => 'prod' } }
     let(:params) { { :logsagent => 'beaver' } }
 
     it { should contain_beaver__stanza('/var/log/openldap.log') }

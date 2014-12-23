@@ -28,8 +28,8 @@ class openldap::install (
   }
 
   group { 'ldap':
-    ensure  => 'present',
-    system  => true,
+    ensure => 'present',
+    system => true,
   }
 
   package { $package:
