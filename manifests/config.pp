@@ -32,8 +32,8 @@ class openldap::config (
 ) {
 
   $cron = $backups ? {
-    /(true|True|'true')/  => 'present',
-    default               => 'absent',
+    /(true|True|'true')/ => 'present',
+    default              => 'absent',
   }
 
   file { '/etc/default/slapd':
@@ -53,19 +53,19 @@ class openldap::config (
   }
 
   file { '/etc/openldap/certs':
-    ensure  => 'directory',
-    owner   => 'ldap',
-    group   => 'ldap',
-    mode    => '0770',
+    ensure => 'directory',
+    owner  => 'ldap',
+    group  => 'ldap',
+    mode   => '0770',
   }
 
   if $certfile != '' {
     file { '/etc/openldap/certs/ldap.pem':
-      ensure  => 'file',
-      owner   => 'ldap',
-      group   => 'ldap',
-      mode    => '0444',
-      source  => $certfile,
+      ensure => 'file',
+      owner  => 'ldap',
+      group  => 'ldap',
+      mode   => '0444',
+      source => $certfile,
     }
   }
 
@@ -81,21 +81,21 @@ class openldap::config (
 
   if $keyfile != '' {
     file { '/etc/openldap/certs/ldap.key':
-      ensure  => 'file',
-      owner   => 'ldap',
-      group   => 'ldap',
-      mode    => '0440',
-      source  => $keyfile,
+      ensure => 'file',
+      owner  => 'ldap',
+      group  => 'ldap',
+      mode   => '0440',
+      source => $keyfile,
     }
   }
 
   if $backups {
     backups::archive { 'openldap_backup':
-      path      => '/usr/var/save/',
-      hour      => 7,
-      minute    => 10,
-      keep      => 30,
-      tmp_path  => '/data/tmp';
+      path     => '/usr/var/save/',
+      hour     => 7,
+      minute   => 10,
+      keep     => 30,
+      tmp_path => '/data/tmp';
     }
   }
 
@@ -118,8 +118,8 @@ class openldap::config (
   case $logsagent {
     'beaver': {
       beaver::stanza { '/var/log/openldap.log':
-        type    => 'syslog',
-        tags    => ['openldap', $::disposition],
+        type => 'syslog',
+        tags => ['openldap', $::disposition],
       }
     }
     default: {}
