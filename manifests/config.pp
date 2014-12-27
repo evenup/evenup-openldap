@@ -20,7 +20,6 @@ class openldap::config (
   $keyfile          = '',
   $base             = '',
   $uri              = '',
-  $backups          = false,
   $chkpass          = false,
   $chkpass_minpts   = 3,
   $chkpass_cracklib = 1,
@@ -28,13 +27,7 @@ class openldap::config (
   $chkpass_minlower = 0,
   $chkpass_mindigit = 0,
   $chkpass_minpunct = 0,
-  $logsagent        = '',
 ) {
-
-  $cron = $backups ? {
-    /(true|True|'true')/ => 'present',
-    default              => 'absent',
-  }
 
   file { '/etc/default/slapd':
     ensure  => 'file',
@@ -88,41 +81,4 @@ class openldap::config (
       source => $keyfile,
     }
   }
-
-  if $backups {
-    backups::archive { 'openldap_backup':
-      path     => '/usr/var/save/',
-      hour     => 7,
-      minute   => 10,
-      keep     => 30,
-      tmp_path => '/data/tmp';
-    }
-  }
-
-  cron { 'openldap_backup':
-    ensure  => $cron,
-    command => '/etc/init.d/slapd backup',
-    user    => 'root',
-    hour    => '6',
-    minute  => '50',
-  }
-
-  cron { 'openldap_backupconfig':
-    ensure  => $cron,
-    command => '/etc/init.d/slapd backupconfig',
-    user    => 'root',
-    hour    => '6',
-    minute  => '55',
-  }
-
-  case $logsagent {
-    'beaver': {
-      beaver::stanza { '/var/log/openldap.log':
-        type => 'syslog',
-        tags => ['openldap', $::disposition],
-      }
-    }
-    default: {}
-  }
-
 }
