@@ -1,9 +1,9 @@
 # Managed by puppet - do not modify
 
-<% if scope.lookupvar('base') != '' -%>
-BASE	        <%= scope.lookupvar('base') %>
+<% if @base -%>
+BASE	        <%= @base %>
 <% end -%>
-<% if scope.lookupvar('uri') != '' -%>
-URI 	        <%= scope.lookupvar('uri') %>
+<% if @uri -%>
+URI 	        <%= @uri %>
 <% end -%>
 TLS_CACERTDIR /etc/openldap/certs

@@ -47,7 +47,7 @@ class openldap::install (
 
   file { '/etc/openldap/slapd.conf':
     ensure  => 'absent',
-    require => Package[$package]
+    require => Package[$package],
   }
 
   file { '/etc/openldap/slapd.d':
@@ -55,7 +55,7 @@ class openldap::install (
     owner   => 'ldap',
     group   => 'ldap',
     mode    => '0770',
-    require => Package[$package]
+    require => Package[$package],
   }
 
 }

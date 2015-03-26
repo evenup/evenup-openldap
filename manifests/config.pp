@@ -16,10 +16,10 @@ class openldap::config (
   $listen_ip        = '*',
   $tls_port         = 389,
   $ssl_port         = 636,
-  $certfile         = '',
-  $keyfile          = '',
-  $base             = '',
-  $uri              = '',
+  $certfile         = undef,
+  $keyfile          = undef,
+  $base             = undef,
+  $uri              = undef,
   $chkpass          = false,
   $chkpass_minpts   = 3,
   $chkpass_cracklib = 1,
@@ -52,7 +52,7 @@ class openldap::config (
     mode   => '0770',
   }
 
-  if $certfile != '' {
+  if $certfile {
     file { '/etc/openldap/certs/ldap.pem':
       ensure => 'file',
       owner  => 'ldap',
@@ -72,7 +72,7 @@ class openldap::config (
     }
   }
 
-  if $keyfile != '' {
+  if $keyfile {
     file { '/etc/openldap/certs/ldap.key':
       ensure => 'file',
       owner  => 'ldap',
