@@ -2,7 +2,7 @@
   "name": "evenup-openldap",
   "version": "0.2.0",
   "author": "Justin Lambert <jlambert@letsevenup.com>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "summary": "Manages OpenLDAP",
   "source": "https://github.com/evenup/evenup-openldap",
   "project_page": "https://github.com/evenup/evenup-openldap",

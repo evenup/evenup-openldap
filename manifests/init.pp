@@ -86,10 +86,10 @@ class openldap(
   $listen_ip        = '*',
   $tls_port         = 389,
   $ssl_port         = 636,
-  $certfile         = '',
-  $keyfile          = '',
-  $base             = '',
-  $uri              = '',
+  $certfile         = undef,
+  $keyfile          = undef,
+  $base             = undef,
+  $uri              = undef,
   $chkpass_minpts   = 3,
   $chkpass_cracklib = 1,
   $chkpass_minupper = 0,
@@ -98,13 +98,13 @@ class openldap(
   $chkpass_minpunct = 0,
 ){
 
-  class { 'openldap::install':
+  class { '::openldap::install':
     ensure  => $ensure,
     package => $package_name,
-    chkpass => $chkpass_pkg
+    chkpass => $chkpass_pkg,
   }
 
-  class { 'openldap::config':
+  class { '::openldap::config':
     listen_ip        => $listen_ip,
     tls_port         => $tls_port,
     ssl_port         => $ssl_port,
@@ -121,7 +121,7 @@ class openldap(
     chkpass_minpunct => $chkpass_minpunct,
   }
 
-  class { 'openldap::service': }
+  class { '::openldap::service': }
 
   # Containment
   anchor { 'openldap::begin': }
